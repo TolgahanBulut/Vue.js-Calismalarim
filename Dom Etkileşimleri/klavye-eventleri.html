@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klavye Eventleri</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <!--v-on:keyup => tuşa bastığın anda gerçekleşen event -->
+    <!--v-on:keyup.enter => Enter bastığın anda gerçekleşen event -->
+    <!--v-on:keyup.enter.space => Enter ve space bastığın anda gerçekleşen event -->
+    <!--v-on:keyup.a=> a'ya bastığın anda gerçekleşen event -->
+
+
+    <div id="app">
+        <button v-on:click="showAlert('Tolga')" >Tıkla</button>
+        <br>
+        <p>{{ counter }}</p>
+        <button v-on:click = "counter++" >Arttır</button>
+        <button v-on:click = "arttir(3)" >2. Yol Arttır</button>
+        <button v-on:click = "counter--" >Azalt</button>
+        <button v-on:click = "azalt(2)" >2. Yol Azalt</button>
+
+       <p v-on:mousemove ="Coords(2,$event)">Koordinatlar :  {{x}} , {{y}} 
+        <span v-on:mousemove.stop>Modifieri Kullanınca Burada Değerler Değişmez</span>
+       </p>
+
+       <input type="text" v-on:keyup.enter ="showAlert2" placeholder="Merhaba">
+
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                counter : 0,
+                x : 0,
+                y : 0
+            },
+            methods : {
+                showAlert : function(name) {
+                     alert(name);
+                },
+                arttir : function(step){
+                    this.counter += step;
+                },
+                azalt : function(step){
+                    this.counter-= step;
+                },
+
+                Coords : function(step,event){
+                    this.counter += step
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                },
+                showAlert2 : function(event){
+                    alert(event.target.value);
+                }
+
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>
