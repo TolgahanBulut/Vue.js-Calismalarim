@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute bind</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <!-- Attribute içerisinde {{ link }} yapısını kullanamıyoruz 
+            Onun için v-bind:(Attribute kullanıyoruz) -->
+
+
+    <div id="app">
+        <h2>{{ hello() }} <a v-bind:href="link">Link</a> </h2>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                title : "Merhaba Tolgahan,",
+                message : "Hoşgeldin Tolgahan Bulut",
+                link : "https://github.com/"
+            },
+            methods : {
+                hello : function(){
+                    return this.title + this.message;
+                }
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>

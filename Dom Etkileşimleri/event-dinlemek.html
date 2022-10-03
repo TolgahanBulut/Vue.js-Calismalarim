@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Dinlemek</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <!-- -->
+
+
+    <div id="app">
+        <button v-on:click="showAlert" >Tıkla</button>
+        <br>
+        <p>{{ counter }}</p>
+        <button v-on:click = "counter++" >Arttır</button>
+        <button v-on:click = "arttir" >2. Yol Arttır</button>
+        <button v-on:click = "counter--" >Azalt</button>
+        <button v-on:click = "azalt" >2. Yol Azalt</button>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                counter : 0
+            },
+            methods : {
+                showAlert : function() {
+                     alert();
+                },
+                arttir : function(){
+                    this.counter++;
+                },
+                azalt : function(){
+                    this.counter--;
+                }
+
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>

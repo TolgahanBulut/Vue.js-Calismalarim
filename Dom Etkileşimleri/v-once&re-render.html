@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-once ile re-render işlemini engellemek</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <!-- v-once : İlk renderdan sonra html üzerinde verinin data içerisinde ne ise öyle kalmasını sağlayan directive'dir -->
+
+
+    <div id="app">
+        <p v-once>{{ title }}</p>
+
+        <h2>{{ hello() }} </h2>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                title : "Merhaba Tolgahan",
+                message : "Hoşgeldin Tolgahan Bulut",
+                link : "https://github.com/"
+            },
+            methods : {
+                hello : function(){
+                    this.title = "Merhaba !!!"
+                    return this.title ;
+                }
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>

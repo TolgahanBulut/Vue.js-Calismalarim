@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Pratik</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="exercise">
+        <!-- 1) Interpolation yani {{}} Syntax'ını kullanarak <p> elementinin içeriğini Name ve Age verileriyle doldurun-->
+         <p>VueJS Muazzam bir Framework - {{ name + age }}</p>
+         
+         <!-- 2) Yaşınızı 5 ile çarpıp <p> içerisinde yazdırınız -->
+         
+         <p>{{ yascarp }}</p>
+     
+         <!-- 3) Fonksiyon çağırarak 0 ile 1 arasında bir sayı üretip <p> içerisinde yazdırınız (Math.random()) -->
+         <p>{{ sayi() }}</p>
+     
+         <!-- 4) Google üzerinden bulacağınız herhangi bir fotoğrafı <img> elementinde gösterme işlemini yapınızı. Bunu yaparken "src" attribute' una bind etmeyi unutmayınız -->
+
+            <img v-bind:src="resim" alt="" height="100">
+     
+         <!-- 5) Name değişkeninin değerinin <input /> içine yazdığınız değer ile anlık olarak değiştirilmesini sağlayınız. ("value" attribute kullanarak) -->
+         <div>
+             <input type="text" v-on:input = "changeName" >
+         </div>
+     </div>
+
+     
+
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#exercise",
+            data : {
+                name : "Tolgahan",
+                age : 26,
+                yascarp : 26*5,
+                resim : "https://picsum.photos/200/300"
+            },
+            methods : {
+                sayi : function(){
+                    return Math.random() * 1;
+                },
+
+                changeName : function(chname){
+                    this.name = chname.target.value;
+                },
+
+            }
+        });
+
+        // <!-- 4) Google üzerinden bulacağınız herhangi bir fotoğrafı <img> elementinde gösterme işlemini yapınızı. Bunu yaparken "src" attribute' una bind etmeyi unutmayınız -->
+    </script>
+    
+</body>
+</html>
