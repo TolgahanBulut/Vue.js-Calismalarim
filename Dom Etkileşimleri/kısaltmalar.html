@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kısaltmalar</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <!-- v-on: = yerine @
+         v-bind:  = yerine :  -->
+
+
+    <div id="app">
+        <button @click="changeLink">Linki Değiştirmak İçin Tıklayınız</button>
+        <a :href="link">Link</a>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                link : "https://www.google.com"
+                
+            },
+            methods : {
+                changeLink : function(){
+                    this.link = "https://www.youtube.com"
+                }
+            }
+        });
+
+
+    </script>
+    
+</body>
+</html>

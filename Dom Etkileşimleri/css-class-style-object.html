@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Classlarıyla Dinamik Stil İşlemleri </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+        display: inline-block;
+        margin-right: 5px;
+    }
+
+    .yellow {
+        background-color: #fbbd08;
+    }
+    .blue {
+        background-color: blue;
+    }
+
+</style>
+<body>
+
+    <!-- -->
+
+
+    <div id="app">
+        <div @click =" control1 = !control1" :class="{yellow : control1}"  class="box"></div>
+        <div :class="divClass" class="box"></div>
+        <div  class="box"></div>
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                control1 : false,
+            },
+            computed : {
+                divClass : function(){
+                    return{
+                        yellow : this.control1,
+                        blue : !this.control1
+                    }
+                    
+                }
+            }
+            
+        });
+
+
+    </script>
+    
+</body>
+</html>

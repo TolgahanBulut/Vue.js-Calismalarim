@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computed Properties ile Değişikliklere Karşılık Vermek!</title>
+    <title>Computed Properties'e Alternatif Watch</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
 </head>
 <body>
 
-    <!--computed data gibi çalışır fakat method gibi çalışır -->
+    <!-- -->
 
 
     <div id="app">
@@ -45,6 +45,14 @@
 
                     return this.counter > 10 ? "Counter 10'dan büyük" : "Counter 10'dan küçük!"
 
+                }
+            },
+            watch : {
+                counter : function(value){
+                    vm = this; // Scope'tan dolayı this data'dan veriyi çekemiyor bu yüzden vm(ismi farketmez) tanımlaması yapıyoruz.
+                    setTimeout(function(){
+                        vm.counter = 0;
+                    },1500)
                 }
             }
         });
