@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v-for ile listeleri render etmek</title>
+    <title>v-for ile aynı seviyedeki elementleri Template ile döndürmek</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
 </head>
 <body>
 
-    <!--   -->
+    <!--   <template> dom içerisinde render edilmez  -->
 
 
     <div id="app">
         <ul>
-            <li v-for="pruduct in pruducts">{{ pruduct }}</li>
+            <li v-for="(pruduct, index) in pruducts">{{ pruduct }} - {{ index }}</li>
         </ul>
+
+        <!-- <div v-for="(pruduct , index) in pruducts">
+            <h3>{{ pruduct}}</h3>
+            <p>{{index}}</p>
+        </div> -->
+
+        <template v-for="(pruduct , index) in pruducts">
+            <h3>{{ pruduct}}</h3>
+            <p>{{index}}</p>
+        </template>
 
     </div>
 

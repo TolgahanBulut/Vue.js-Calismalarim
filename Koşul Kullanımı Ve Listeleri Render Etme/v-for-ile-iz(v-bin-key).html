@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for kullanırken elementlerin izini sürmek (v-bind:key)</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10/dist/vue.js"></script>
+</head>
+<body>
+
+    <!-- :key="product" kullanırsak ilerleyen süreçlerde productların yerini değiştiriğimizde index no'ları veya yerlerini değil direkt kendilerini kaydettikleri için bi problem olmuyor. -->
+
+    
+
+    <hr>
+
+    <div id="app">
+
+        <!-- 
+        <ul>
+            <li v-for="personel in persons">{{ personel.name }}  = {{ personel.email}} </li>
+        </ul>
+         -->
+
+         <ul>
+            <li v-for="personel in persons">
+                <ul v-for="(value , key , index) in personel" :key="pruduct">
+                    <li> <strong> {{ key }} </strong> : {{ value }} = {{ index }}</li>
+                </ul>
+            </li>
+        </ul>
+
+
+
+        <ul>
+            <li v-for="(pruduct, index) in pruducts">{{ pruduct }} - {{ index }}</li>
+        </ul>
+
+
+        <hr>
+        <!-- <div v-for="(pruduct , index) in pruducts">
+            <h3>{{ pruduct}}</h3>
+            <p>{{index}}</p>
+        </div> -->
+
+        <template v-for="(pruduct , index) in pruducts">
+            <h3>{{ pruduct}}</h3>
+            <p>{{index}}</p>
+        </template>
+
+        <span v-for="i in 5"> {{ i }}</span>
+
+    </div>
+
+
+
+    <script type="text/javascript">
+
+        new Vue({
+            el : "#app",
+            data : {
+                pruducts : ["Monitör","Klavye","Askı","Masa"],
+                persons : [
+                    {name : "Tolgahan", email : "tolgahanb96@gmail.com"},
+                    {name : "Tunay", email : "tunayb@gmail.com"},
+                    {name : "Ufuk", email : "ufuk@gmail.com"},
+                    {name : "Serpil", email : "serpil@gmail.com"},
+            ]
+            }
+            
+        });
+
+
+    </script>
+    
+</body>
+</html>
