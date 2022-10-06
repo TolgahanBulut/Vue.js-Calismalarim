@@ -1,0 +1,94 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app1">
+  <h1 ref="heading">{{ title }}</h1>
+  <button v-on:click="show">Paragrafı Göster</button>
+  <p v-if="showParagraph">Her zaman göremeyebiliriz!!</p>
+
+
+
+</div>
+
+
+<div id="app2">
+  <h1 ref="heading">{{ title }}</h1>
+
+  <button @click ="changeTitle">Change Title</button>
+
+
+
+</div>
+
+
+<div id="app3">
+
+</div>
+
+
+<script text="taxt/javascript">
+  // Template dışarıdan mount edebilme yani bağlamaya yarıyor
+
+  var vm1 = new Vue({
+
+ 
+  data: {
+    title: 'VueJS Instance',
+    showParagraph: false
+  },
+  methods: {
+    show: function() {
+      this.showParagraph = true;
+      this.updateTitle('VueJS Instance (Güncellendi)');
+    },
+    updateTitle: function(title) {
+      this.title = title;
+    }
+  },
+  computed: {
+    lowercaseTitle: function() {
+      return this.title.toLowerCase();
+    }
+  },
+  watch: {
+    title: function(value) {
+      alert('Title değişti, yeni değer : ' + value);
+    }
+  }
+});
+
+vm1.$mount("#app1");
+
+
+
+
+setTimeout(function(){
+  vm1.title = "Timer Tarafından Değiştirildi !!!"
+  vm1.show()
+},2000)
+
+  var vm2 = new Vue({
+  el: "#app2",
+  data : {
+    title : "Vue Instance 2"
+  },
+  methods : {
+    changeTitle : function(){
+      vm1.title = "Vue Instance 2 Tarafından Değiştirildi."
+    }
+  }
+})
+
+
+
+
+var vm3 = new Vue({
+  template : '<h1>Merhabalar........</h1> '
+})
+
+  vm3.$mount("#app3") 
+
+// document.getElementById("app3").appendChild(vm3.$el);
+
+
+
+</script>
