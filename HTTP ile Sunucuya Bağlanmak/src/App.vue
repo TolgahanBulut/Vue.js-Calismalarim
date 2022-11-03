@@ -12,7 +12,7 @@
         <ul class="list-group">
           <li class="list-group-item" v-for="user in userList">
             <span>{{user.data.userName}}</span>
-          <button class="btn btn-xs btn-danger" @click="deleteUser">Sil</button> </li>
+           <button class="btn btn-xs btn-danger" @click="deleteUser(user.key)">Sil</button>  </li> 
         </ul>
       </div>
     </div>
@@ -24,36 +24,46 @@ export default {
   data(){
     return {
       userName : null,
-      userList : []
+      userList : [],
+      resource : {}
     }
   },
   methods : {
     // post ve get () içerisindeki url'yi global olarak main.js dosyasına ekledik.
     saveUser(){
-      this.$http.post("//users.json",{userName : this.userName}).then((response)=> {
-        console.log(response)
-      })
+      // this.$http.post("users.json",{userName : this.userName})
+      // .then((response)=> {
+      //   console.log(response)
+      // })
+      this.resource.kaydet({},{ userName : this.userName});
     },
     getUsers(){
-      this.$http.get("//users.json").then((response)=> {
-        // console.log(response.body)  // Verileri gösterir body/data aynı
-        //  console.log(response.data)
-
-        let data = response.data;
-        for(let key in data){
-          this.userList.push({
+      this.$resource("users.json").get()
+      .then((response)=> {
+        return response.json();
+      }).then(data => {
+        for(let key in data.userList){
+          this.userList.push(
+            {
             key : key,
             data : data.userList[key]
           })
-        } 
+        }
       })
     },
-    deleteUser(userKey){
-      this.$http.delete("/users" + userKey + ".json").then((response)=> {
+     deleteUser(userKey){
+      this.$resource("users/" + userKey + ".json").delete()
+      .then(response => {
         console.log(response)
       })
-    }
-  }
+     }
+  },
+  created() {
+    const customActions = {
+      kaydet : { method : "POST", url : "users.json"}
+    };
+    this.resource = this.$resource("users.json",{}, customActions)
+  },
 }
 </script>
 

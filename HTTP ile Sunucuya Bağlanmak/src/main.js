@@ -8,12 +8,18 @@ Vue.http.options.root = 'https://vuejs-vue-resource-e96da-default-rtdb.firebasei
 
 // POST ile gönderirken PUT'a çevirir ve verileri değiştirir.
 
-// Vue.http.interceptors.push((request,next)=> {
-//   if(request.methods == "POST"){
-//     request.method = "PUT"
-//   }
-//   next();
-// })
+Vue.http.interceptors.push((request,next)=> {
+  // if(request.methods == "POST"){
+  //   request.method = "PUT"
+  // }
+  next(response => {
+    response.json = () => {
+      return{
+      userList : response.data
+      }
+    }
+  });
+})
 
 new Vue({
   el: '#app',
