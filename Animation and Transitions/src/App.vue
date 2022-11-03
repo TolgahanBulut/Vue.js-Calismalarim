@@ -42,6 +42,56 @@ export default {
     }
   },
   methods : {
+    beforeEnter(el){
+      console.log("beforeEnter")
+      this.elementWidth = 100;
+      el.style.width = this.elementWidth + "px";
+    },
+    enter(el, done){
+      console.log("enter");
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = (this.elementWidth + round * 10) + "px";
+        round++;
+        if(round > 20){
+          clearInterval(interval);
+          done();
+        }
+      }, 50);
+    },
+    afterEnter(el){
+      console.log("afterEnter")
+    },
+    afterEnterCancelled(el){
+      console.log("afterEnterCancelled")
+
+    },
+    beforeLeave(el){
+      console.log("beforeLeave")
+      this.elementWidth = 300;
+      el.style.width = this.elementWidth + "px"
+    },
+    leave(el, done){
+      console.log("leave")
+      let round = 1;
+      const interval = setInterval(() => {
+        el.style.width = (this.elementWidth + round * 10) + "px";
+        round++;
+        if(round > 20){
+          clearInterval(interval);
+          done();
+        }
+      }, 50);
+
+    },
+    afterLeave(el){
+      console.log("afterLeave")
+
+    },
+    afterLeaveCancelled(el){
+      console.log("afterLeaveCancelled")
+
+    }
 
     }
   }
