@@ -68,4 +68,8 @@ export default {
 </script>
 
 <style>
+
+h3::selection{
+  background-color: #f6bfe2;
+}
 </style>
