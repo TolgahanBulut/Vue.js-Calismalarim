@@ -15,6 +15,7 @@
 <script>
   import Result from "./components/Result";
   import Counter from "./components/Counter";
+
   export default {
     data(){
       return {
@@ -23,7 +24,8 @@
     },
     components: {
       appResult: Result,
-      appCounter: Counter
+      appCounter: Counter,
+
     }
   }
 </script>

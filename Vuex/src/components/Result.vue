@@ -5,7 +5,7 @@
 </template>
 <script>
   export default {
-    props : ["counter"],
+    // props : ["counter"],
     computed : {
       counter(){
         return this.$store.state.counter;

@@ -11,10 +11,13 @@ export default {
     incrementCounter(){
       // this.$emit("counterEvent", 1);
       this.$store.state.counter++;
+      console.log("Değişti")
     },
     decrementCounter(){
       // this.$emit("counterEvent", -1);
       this.$store.state.counter--;
+      console.log("Değişti")
+
     }
   }
 }
