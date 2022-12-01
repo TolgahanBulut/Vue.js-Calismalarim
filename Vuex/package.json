@@ -1,5 +1,5 @@
 {
-  "name": "vue-router-ile-route-yonetimi",
+  "name": "vuex-ile-daha-iyi-state-yonetimi",
   "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "gkandemi <gokhan@gkandemir.com>",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "vue": "^2.5.11",
-    "vue-router": "^3.0.1"
+    "vuex": "^4.1.0"
   },
   "browserslist": [
     "> 1%",
