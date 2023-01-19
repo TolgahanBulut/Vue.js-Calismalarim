@@ -1,22 +1,29 @@
 <template>
-    <div class="tag-container">
-        <app-tags></app-tags>
-
-    </div>
+  <div class="container">
+    <app-tags v-model="tags" color="success"/>
+    <app-tags v-model="tags2" color="danger"/>
+    <app-tags v-model="tags2" color="info"/>
+    <app-tags v-model="tags2" color="primary"/>
+    <app-tags v-model="tags2" color="warning"/>
+    <app-tags v-model="tags2" color="secondary"/>
+  </div>
 </template>
-
 <script>
-import Tags from './components/Tags.vue'
-export default {
+  import Tags from "./components/Tags"
+  export default {
     components : {
-        appTags : Tags
+      appTags : Tags
+    },
+    data(){
+      return {
+        tags : "deneme,test",
+        tags2 : "deneme,test,klavye,telsiz",
+      }
     }
-}
+  }
 </script>
-
 <style>
-    body{
-        font-family: sans-serif;
-    }
-    
+  body {
+    font-family: sans-serif;
+  }
 </style>
