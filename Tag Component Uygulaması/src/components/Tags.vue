@@ -71,7 +71,6 @@
     created(){
       if(this.value){
         if(this.value.length > 0){
-          // deneme,test
           this.tags = this.value.split(",")
         }
       }
